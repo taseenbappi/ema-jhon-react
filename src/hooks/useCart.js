@@ -8,7 +8,7 @@ const useCart = products => {
         if (products.length) {
             const saveCart = getStoredCart();
             const storedCart = [];
-            for (const key of saveCart) {
+            for (const key in saveCart) {
                 const addedProduct = products.find(product => product.key === key);
                 if (addedProduct) {
                     const quantity = storedCart[key];
@@ -20,6 +20,6 @@ const useCart = products => {
             setCart(storedCart);
         }
     }, [products])
-    return [cart];
+    return [cart, setCart];
 }
 export default useCart;
